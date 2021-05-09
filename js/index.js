@@ -1,22 +1,17 @@
-// async function fetchPosts() {
-// 		const response = await fetch('https://jsonplaceholder.typicode.com/todos/1');
-// 		const todos = await response.json();
-//
-// 		return todos;
-// }
-//
-// fetchPosts().then(todos => todos.title);
-
-
-const getData = async () => {
-		const result = await fetch('https://swapi.dev/api/starships/9');
-		const starship = await result.json();
+const getData = async (url) => {
+		const result = await fetch(url, {
+				method: 'GET',
+				headers: {
+						'Content-type': 'application/json'
+				},
+		});
 
 		if(!result.ok) {
 				throw new Error(`Error status: ${result.status} ${result.url}`)
 		}
 
-		return starship
+		return result.json();
 }
 
-getData().then(starship => console.log(starship));
+getData('https://swapi.dev/api/starships/9/').then(starship => console.log(starship));
+
