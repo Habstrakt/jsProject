@@ -13,5 +13,19 @@ const getData = async (url) => {
 		return result.json();
 }
 
-getData('https://swapi.dev/api/starships/9/').then(starship => console.log(starship));
+//getData('https://swapi.dev/api/starships/').then(starship => console.log(starship));
 
+getData('https://swapi.dev/api/starships/').then(data => data.results.forEach(item => {
+		console.log(item);
+}));
+
+getData('https://swapi.dev/api/starships/').then(data => data.results.forEach(item => {
+		console.log(item.model);
+}));
+
+getData('https://swapi.dev/api/starships/').then(data => data.results.forEach(item => {
+		console.log(item.model);
+		console.log(item.name);
+}));
+
+getData('https://swapi.dev/api/starships/').then(data => console.log(data.next));
